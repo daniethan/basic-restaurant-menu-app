@@ -9,8 +9,8 @@ __pycache__/
 #test db
 *.db
 
-#requirements and docs
-*.txt
+# #requirements and docs
+# *.txt
 
 # Distribution / packaging
 static/

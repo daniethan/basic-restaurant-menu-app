@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% block title %} Are you sure you want to delete:
+<br /><em style="border-bottom: 1px dotted; color: red">{{restaurant.name}}</em
+>? {% endblock title %} {% block content %}
+
+<form
+  method="POST"
+  enctype="multipart/form-data"
+  action="{{ url_for('delete_restaurant', restaurant_id=restaurant.id)}}"
+  style="text-align: center"
+>
+  <input
+    type="submit"
+    value="DELETE"
+    style="text-decoration: none; color: red"
+  />
+</form>
+{% endblock content %}

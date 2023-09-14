@@ -1,0 +1,47 @@
+{% extends 'layout.html' %} {% block title%} All Restaurants {% endblock title%}
+{% block pageLinks %}
+<button>
+  <a
+    href="{{ url_for('create_restaurant') }}"
+    style="text-decoration: none; color: rgb(49, 96, 226)"
+  >
+    Add New Restaurant
+  </a>
+</button>
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul style="text-align: center">
+  {% for message in messages %}
+  <li style="list-style: none; color: aqua"><strong>{{ message }}</strong></li>
+  {% endfor %}
+</ul>
+
+{% endif %} {% endwith %} {% endblock pageLinks %} {% block content %} {% for
+restaurant in restaurants %}
+<h2>{{ restaurant.name }}</h2>
+
+<button style="margin-bottom: 2%">
+  <a
+    href="{{ url_for('restaurant_menu', restaurant_id=restaurant.id) }}"
+    style="text-decoration: none; color: rgb(160, 66, 11)"
+  >
+    Menu
+  </a></button
+><br />
+<button style="margin-right: 2%">
+  <a
+    href="{{ url_for('edit_restaurant', restaurant_id=restaurant.id) }}"
+    style="text-decoration: none; color: green"
+  >
+    Edit
+  </a>
+</button>
+<button>
+  <a
+    href="{{ url_for('delete_restaurant', restaurant_id=restaurant.id) }}"
+    style="text-decoration: none; color: red"
+  >
+    Delete
+  </a></button
+><br />
+<hr />
+{% endfor %} {% endblock content %}

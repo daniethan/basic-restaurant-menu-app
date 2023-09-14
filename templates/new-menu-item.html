@@ -1,0 +1,68 @@
+{% extends 'layout.html' %} {% block title %}New Menu Item{% endblock title %}
+{% block content %}
+<div style="display: flex; justify-content: center">
+  <form
+    action="{{ url_for('new_menu_item', restaurant_id=restaurant_id)}}"
+    method="post"
+  >
+    <label for="name" style="font-weight: bold">Name:</label><br />
+    <input
+      type="text"
+      id="name"
+      name="name"
+      size="30"
+      placeholder="New Item Name"
+      required
+    /><br /><br />
+    <label for="description" style="font-weight: bold">Description:</label
+    ><br />
+    <textarea
+      name="description"
+      cols="31"
+      rows="5"
+      id="description"
+      placeholder="Describe the new menu item..."
+    ></textarea
+    ><br /><br />
+    <div style="display: flex; justify-content: space-between">
+      <div>
+        <label for="price" style="font-weight: bold">Price:</label><br />
+        <input
+          type="text"
+          name="price"
+          id="price"
+          placeholder="Price in $"
+          size="10"
+          required
+        />
+      </div>
+      <div>
+        <label for="course" style="font-weight: bold">Course:</label><br />
+        <select name="course" id="course">
+          <option value="" selected disabled>--Select Course--</option>
+          {% for option in ('Salad','Breakfast', 'Lunch','Dinner') %}
+          <option value="{{option}}">{{option}}</option>
+          {% endfor %} >
+        </select>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div style="display: flex; justify-content: space-around">
+      <input
+        type="submit"
+        value="Save"
+        style="color: green; margin-right: 2%; font-weight: bold"
+      />
+      <button>
+        <a
+          href="{{url_for('restaurant_menu', restaurant_id=restaurant_id)}}"
+          style="text-decoration: none; font-weight: bold; color: red"
+        >
+          Cancel
+        </a>
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'layout.html' %} {% block title %} Create New Restaurant {% endblock
+title %} {% block content %}
+<div style="display: flex; justify-content: center">
+  <form
+    action="{{ url_for('edit_restaurant', restaurant_id=restaurant.id)}}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <input
+      type="text"
+      name="new_name"
+      size="30"
+      value="{{restaurant.name}}"
+    /><br /><br />
+    <div style="display: flex; justify-content: space-around">
+      <input type="submit" value="Save" style="color: green" />
+      <button>
+        <a
+          href="{{url_for('index')}}"
+          style="text-decoration: none; color: red"
+        >
+          Cancel
+        </a>
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

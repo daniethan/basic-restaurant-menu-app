@@ -1,0 +1,20 @@
+{% extends 'layout.html' %} {% block title %} Create New Restaurant {% endblock
+title %} {% block content %}
+<div style="display: flex; justify-content: center">
+  <form
+    action="{{ url_for('create_restaurant')}}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <input
+      name="name"
+      type="text"
+      placeholder="Enter New restaurant name"
+      required
+    /><br /><br />
+    <div style="display: flex; justify-content: center">
+      <input type="submit" value="Create" style="color: green" />
+    </div>
+  </form>
+</div>
+{% endblock content %}
